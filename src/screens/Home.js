@@ -2,6 +2,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from "@react-navigation/stack";
+import Mypage from './Mypage';
+
+const Tab = createBottomTabNavigator();
 
 const Home = () => {
     return (
@@ -12,17 +16,17 @@ const Home = () => {
 
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity onPress={() => {}} style={styles.magajin}>
-                <Image
-                    source={require('../../assets/tomatoleafmold1.jpg')}
-                    style={styles.image}></Image>
-                <Text style={styles.smallTitle}>토마토 잎마름병</Text>
+                    <Image
+                        source={require('../../assets/tomatoleafmold1.jpg')}
+                        style={styles.image}></Image>
+                    <Text style={styles.smallTitle}>토마토 잎마름병</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {}} style={styles.magajin}>
-                <Image
-                    source={require('../../assets/yellowleafcurlVirus1.jpg')}
-                    style={styles.image}></Image>
-                <Text style={styles.smallTitle}>토마토 잎마름병</Text>
+                    <Image
+                        source={require('../../assets/yellowleafcurlVirus1.jpg')}
+                        style={styles.image}></Image>
+                    <Text style={styles.smallTitle}>토마토 잎마름병</Text>
                 </TouchableOpacity>
             </View>
 
@@ -30,15 +34,16 @@ const Home = () => {
             <TouchableOpacity onPress={() => {}} style={styles.magajin}>
                 <Image
                     source={require('../../assets/yellowleafcurlVirus2.jpg')}
-                    style={styles.image2}></Image>
-                </TouchableOpacity>
+                    style={styles.image2}>
+                </Image>
+            </TouchableOpacity>
 
-                <NavigationContainer>
-                    <Tab.Navigator>
-                        <Tab.Screen name="Home" component={Home} />
-                        
-                    </Tab.Navigator>
-                </NavigationContainer>
+            <NavigationContainer independent={true}>
+                <Tab.Navigator>
+                <Tab.Screen name="Home" component={Home} />
+                <Tab.Screen name="Mypage" component={Mypage} />
+                </Tab.Navigator>
+            </NavigationContainer>
         </View>
     );
 };
