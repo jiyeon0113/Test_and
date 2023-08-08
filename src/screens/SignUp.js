@@ -10,7 +10,7 @@ const SignUp = ({ navigation }) => {
     const handleSignUp = () => {
         if (nickname && email && password && confirmPassword ) {
             if (password === confirmPassword) {
-                navigation.navigate('Home');
+                navigation.navigate('Main');
             } else {
                 console.log ('비밀번호가 일치하지 않습니다');
             }

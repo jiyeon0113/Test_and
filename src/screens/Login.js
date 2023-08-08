@@ -4,7 +4,7 @@ import Input, {KeyboardTypes, ReturnKeyTypes} from '../components/Input';
 import {Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
-import Home from './Home';
+import Main from './Main';
 
 const Login = () => {
     const navigation = useNavigation();
@@ -24,8 +24,8 @@ const Login = () => {
         navigation.navigate('TermsScreen');
     };
 
-    const handleHomeScreen = () => {
-        navigation.navigate('Home');
+    const handleMainScreen = () => {
+        navigation.navigate('Main');
     };
 
     return (
@@ -54,7 +54,7 @@ const Login = () => {
             <Button
             title="login"
             modeValue="text"
-            onPress={handleHomeScreen}
+            onPress={handleMainScreen}
             style={styles.Button}
             disabled={!isLoginEnabled()}
             />
