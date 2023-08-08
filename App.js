@@ -20,54 +20,54 @@ const Stack = createStackNavigator();
 const App = () => {
     return (
         <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="TermsScreen"
-            component={TermsScreen}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="SignUp"
-            component={SignUp}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="Main"
-            component={Main}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="Mypage"
-            component={Mypage}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="Camera"
-            component={Camera}
-            options={{headerShown: false}}
-            />
-            <Stack.Screen
-            name="Setting"
-            component={Setting}
-            options={{headerShown: false}}
-            />
+            <Stack.Navigator initialRouteName="Login">
+                <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="TermsScreen"
+                component={TermsScreen}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Main"
+                component={Main}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Mypage"
+                component={Mypage}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Camera"
+                component={Camera}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Setting"
+                component={Setting}
+                options={{headerShown: false}}
+                />
 
-            <Stack.Screen
-            name="Magagin_one"
-            component={Magajin_one}
-            options={{headerShown: false}}
-            />
-        </Stack.Navigator>
+                <Stack.Screen
+                name="Magagin_one"
+                component={Magajin_one}
+                options={{headerShown: false}}
+                />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 };

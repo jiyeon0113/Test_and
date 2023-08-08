@@ -5,7 +5,7 @@ const Setting = () => {
     return (
         <View>
             <Text>
-                Mypage
+                Setting
             </Text>
         </View>
     )

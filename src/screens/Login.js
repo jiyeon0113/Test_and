@@ -25,7 +25,7 @@ const Login = () => {
     };
 
     const handleMainScreen = () => {
-        navigation.navigate('Main');
+        navigation.navigate('Home');
     };
 
     return (

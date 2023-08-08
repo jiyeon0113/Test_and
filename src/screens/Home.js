@@ -1,5 +1,5 @@
 import React from 'react';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Button, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,19 +7,31 @@ import { NavigationContainer } from '@react-navigation/native';
 import Camera from './Camera';
 import Setting from './Setting';
 import Mypage from './Mypage';
+import Main from './Main';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function Home() {
     return (
         <>
+        
             <Tab.Navigator
                 initialRouteName="Home"
                 screenOptions={{
                     tabBarShowLabel: false,
                     tabBarActiveTintColor: '#8CB972',
                 }}>
-                `<Tab.Screen
+                    <Tab.Screen
+                    name="Main"
+                    component={Main}
+                    options={{
+                    tabBarLabel: '마이페이지',
+                    tabBarIcon: ({color}) => (
+                        <Icon name="home" color={color} size={24} />
+                    ),
+                    }}
+                />
+                <Tab.Screen
                     name="Mypage"
                     component={Mypage}
                     options={{
@@ -49,6 +61,7 @@ function Home() {
                     ),
                     }}
                 />
+                
             </Tab.Navigator>
         </>
     );

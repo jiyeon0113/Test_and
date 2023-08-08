@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet, ScrollView} from 'react-native';
 import Home from './Home';
 import Magajin_one from './Magajin_one';
 import {useNavigation} from '@react-navigation/native';
@@ -13,7 +13,8 @@ const Main = () => {
     };
 
     return (
-        <View style={styles.title}>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View style={styles.title}>
         <Text style={styles.titleText}>GreenDan</Text>
 
         <Text style={styles.container}>자주 발병하는 병해</Text>
@@ -40,9 +41,9 @@ const Main = () => {
             source={require('../../assets/yellowleafcurlVirus2.jpg')}
             style={styles.image2}></Image>
         </TouchableOpacity>
-
-        <Home />
         </View>
+        </ScrollView>
+        
     );
 };
 
