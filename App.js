@@ -10,7 +10,7 @@ import SignUp from './src/screens/SignUp';
 import Home from './src/screens/Home';
 import Main from './src/screens/Main';
 import Mypage from './src/screens/Mypage';
-import Kamara from './src/screens/Kamara';
+import Camera from './src/screens/Camera';
 import Setting from './src/screens/Setting';
 
 import Magajin_one from './src/screens/Magajin_one';
@@ -52,8 +52,8 @@ const App = () => {
             options={{headerShown: false}}
             />
             <Stack.Screen
-            name="Kamara"
-            component={Kamara}
+            name="Camera"
+            component={Camera}
             options={{headerShown: false}}
             />
             <Stack.Screen

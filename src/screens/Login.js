@@ -4,7 +4,7 @@ import Input, {KeyboardTypes, ReturnKeyTypes} from '../components/Input';
 import {Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
-import Main from './Main';
+
 
 const Login = () => {
     const navigation = useNavigation();
@@ -66,6 +66,10 @@ const Login = () => {
             style={styles.Button}
             />
         </View>
+
+        <Text style = {styles.text}>
+            vol.0.1
+        </Text>
         </View>
     );
     };
@@ -83,6 +87,10 @@ const Login = () => {
     Button: {
         backgroundColor: '#E5EFDF',
         margin: 10,
+    },
+    text: {
+        marginTop: 200,
+        alignItems: 'center',
     },
 });
 

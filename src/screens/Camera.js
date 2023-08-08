@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const Kamara = () => {
+const Camera = () => {
     return (
         <View>
             <Text>
@@ -11,4 +11,4 @@ const Kamara = () => {
     )
 }
 
-export default Kamara;
+export default Camera;
