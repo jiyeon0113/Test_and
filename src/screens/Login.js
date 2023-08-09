@@ -95,7 +95,6 @@ const Login = () => {
             <Toast
             style={styles.toastContainer}
             text1="로그인 성공"
-            visibilityTime={5000} // Show for 2 seconds
             />
         )}
         <Text style={styles.text}>vol.0.2</Text>
