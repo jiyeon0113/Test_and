@@ -13,7 +13,7 @@ import Mypage from './src/screens/Mypage';
 import Camera from './src/screens/Camera';
 import Setting from './src/screens/Setting';
 
-import Magajin_one from './src/screens/Magajin_one';
+import Magazine_one from './src/screens/Magazine_one';
 
 const Stack = createStackNavigator();
 
@@ -63,8 +63,8 @@ const App = () => {
                 />
 
                 <Stack.Screen
-                name="Magagin_one"
-                component={Magajin_one}
+                name="Magazine_one"
+                component={Magazine_one}
                 options={{headerShown: false}}
                 />
             </Stack.Navigator>

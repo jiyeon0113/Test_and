@@ -1,15 +1,15 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet, ScrollView} from 'react-native';
 import Home from './Home';
-import Magajin_one from './Magajin_one';
+import Magajin_one from './Magazine_one';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 
 const Main = () => {
     const navigation = useNavigation();
 
-    const handleMagajin = () => {
-        navigation.navigate('Magajin_one');
+    const handleMagazine = () => {
+        navigation.navigate('Magazine_one');
     };
 
     return (
@@ -20,7 +20,7 @@ const Main = () => {
         <Text style={styles.container}>자주 발병하는 병해</Text>
 
         <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity style={styles.magajin} onPress={handleMagajin}>
+            <TouchableOpacity style={styles.magajin} onPress={handleMagazine}>
             <Image
                 source={require('../../assets/tomatoleafmold1.jpg')}
                 style={styles.image}></Image>

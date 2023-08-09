@@ -20,14 +20,15 @@ function Home() {
                 screenOptions={{
                     tabBarShowLabel: false,
                     tabBarActiveTintColor: '#8CB972',
+                    tabBarStyle: {height: 80},
                 }}>
                     <Tab.Screen
-                    name="Main"
+                    name="GreenDan"
                     component={Main}
                     options={{
                     tabBarLabel: '마이페이지',
                     tabBarIcon: ({color}) => (
-                        <Icon name="home" color={color} size={24} />
+                        <Icon name="home" color={color} size={40} />
                     ),
                     }}
                 />
@@ -37,7 +38,7 @@ function Home() {
                     options={{
                     tabBarLabel: '마이페이지',
                     tabBarIcon: ({color}) => (
-                        <Icon name="account-circle" color={color} size={24} />
+                        <Icon name="account-circle" color={color} size={40} />
                     ),
                     }}
                 />
@@ -47,7 +48,7 @@ function Home() {
                     options={{
                     tabBarLabel: '카메라',
                     tabBarIcon: ({color}) => (
-                        <Icon name="add-a-photo" color={color} size={24} />
+                        <Icon name="add-a-photo" color={color} size={40} />
                     ),
                     }}
                 />
@@ -57,7 +58,7 @@ function Home() {
                     options={{
                     tabBarLabel: '설정',
                     tabBarIcon: ({color}) => (
-                        <Icon name="dehaze" color={color} size={24} />
+                        <Icon name="dehaze" color={color} size={40} />
                     ),
                     }}
                 />
