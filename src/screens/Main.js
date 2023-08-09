@@ -1,9 +1,6 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, StyleSheet, ScrollView} from 'react-native';
-import Home from './Home';
-import Magajin_one from './Magazine_one';
-import {useNavigation} from '@react-navigation/native';
-import {useState} from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Main = () => {
     const navigation = useNavigation();
@@ -11,44 +8,58 @@ const Main = () => {
     const handleMagazine = () => {
         navigation.navigate('Magazine_one');
     };
+    const handleMagazine_two = () => {
+        navigation.navigate('Magazine_two');
+    };
+
+    const data = [
+        {
+            id: '1',
+            title: '토마토 잎 곰팡이병',
+            image: require('../../assets/tomatoleafmold1.jpg')
+        },
+        {
+            id: '2',
+            title: '토마토 황화잎말이 바이러스',
+            image: require('../../assets/yellowleafcurlVirus1.jpg')
+        },
+    ];
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity
+            style={styles.magazineItem}
+            onPress={item.id === '1' ? handleMagazine : handleMagazine_two}
+        >
+            <View style={styles.imageContainer}>
+                <Image source={item.image} style={styles.image} />
+                <Text style={styles.smallTitle}>{item.title}</Text>
+            </View>
+        </TouchableOpacity>
+    );
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-            <View style={styles.title}>
-        <Text style={styles.titleText}>GreenDan</Text>
-
-        <Text style={styles.container}>자주 발병하는 병해</Text>
-
-        <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity style={styles.magajin} onPress={handleMagazine}>
-            <Image
-                source={require('../../assets/tomatoleafmold1.jpg')}
-                style={styles.image}></Image>
-            <Text style={styles.smallTitle}>토마토 잎마름병</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => {}} style={styles.magajin}>
-            <Image
-                source={require('../../assets/yellowleafcurlVirus1.jpg')}
-                style={styles.image}></Image>
-            <Text style={styles.smallTitle}>토마토 곰팡이</Text>
-            </TouchableOpacity>
-        </View>
-
-        <Text style={styles.container2}>나의 지난 기록</Text>
-        <TouchableOpacity onPress={() => {}} style={styles.magajin}>
-            <Image
-            source={require('../../assets/yellowleafcurlVirus2.jpg')}
-            style={styles.image2}></Image>
-        </TouchableOpacity>
-        </View>
+            <View style={styles.container}>
+                <Text style={styles.titleText}>GreenDan</Text>
+                <Text style={styles.container}>자주 발병하는 병해</Text>
+                <FlatList
+                    data={data}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+                <Text style={styles.container2}>나의 지난 기록</Text>
+                    <TouchableOpacity onPress={() => {}} style={styles.magazineContainer}>
+                        <Image source={require('../../assets/yellowleafcurlVirus2.jpg')} style={styles.image2} />
+                        <Text style={styles.magazineText}>2023.8.1{"\n"}진단 결과</Text>
+                    </TouchableOpacity>
+                    
+            </View>
         </ScrollView>
-        
     );
 };
 
 const styles = StyleSheet.create({
-    title: {
+    container: {
         flex: 1,
         alignItems: 'center',
         paddingTop: 20,
@@ -58,9 +69,6 @@ const styles = StyleSheet.create({
         color: '#8CB972',
         marginBottom: 40,
     },
-    subtitleText: {
-        fontSize: 24,
-    },
     container: {
         alignItems: 'center',
         color: '#2D5E40',
@@ -68,27 +76,51 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     container2: {
+        margin: 10,
         marginTop: 30,
         alignItems: 'center',
         color: '#2D5E40',
         fontSize: 20,
     },
     image: {
-        width: 130,
-        height: 180,
+        width: 180,
+        height: 130,
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
     },
     image2: {
-        width: 300,
-        height: 250,
+        width: 180,
+        height: 130,
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
     },
     smallTitle: {
-        width: 130,
+        width: 80,
+        height: 130,
         backgroundColor: '#808080',
-        alignItems: 'center',
         fontSize: 15,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
     },
-    magajin: {
-        margin: 20,
+    imageContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: 10,
+    },
+    magazineText: {
+        width: 80,
+        height: 130,
+        backgroundColor: '#808080',
+        fontSize: 15,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
+    },
+    magazineContainer: {
+        flexDirection: 'row',
     },
 });
 

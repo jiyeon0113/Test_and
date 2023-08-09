@@ -14,6 +14,15 @@ import Camera from './src/screens/Camera';
 import Setting from './src/screens/Setting';
 
 import Magazine_one from './src/screens/Magazine_one';
+import Magazine_two from './src/screens/Magazine_two';
+import Pw_find from './src/screens/Pw_find';
+
+import LastRecord from './src/screens/screensMypage/LastRecord';
+import MyBookmark from './src/screens/screensMypage/MyBookmark';
+import Myprofil from './src/screens/screensMypage/Myprofil';
+import Pw_reset from './src/screens/screensMypage/Pw_reset';
+
+import Result from './src/screens/screensPhoto/Result';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +45,7 @@ const App = () => {
                 component={SignUp}
                 options={{headerShown: false}}
                 />
+
                 <Stack.Screen
                 name="Home"
                 component={Home}
@@ -62,9 +72,48 @@ const App = () => {
                 options={{headerShown: false}}
                 />
 
+
                 <Stack.Screen
                 name="Magazine_one"
                 component={Magazine_one}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Magazine_two"
+                component={Magazine_two}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Pw_find"
+                component={Pw_find}
+                options={{headerShown: false}}
+                />
+
+
+                <Stack.Screen
+                name="LastRecord"
+                component={LastRecord}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="MyBookmark"
+                component={MyBookmark}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Myprofil"
+                component={Myprofil}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Pw_reset"
+                component={Pw_reset}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen
+                name="Result"
+                component={Result}
                 options={{headerShown: false}}
                 />
             </Stack.Navigator>
