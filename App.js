@@ -13,16 +13,19 @@ import Mypage from './src/screens/Mypage';
 import Camera from './src/screens/Camera';
 import Setting from './src/screens/Setting';
 
-import Magazine_one from './src/screens/Magazine_one';
-import Magazine_two from './src/screens/Magazine_two';
+import Magazine from './src/screens/Magazine';
 import Pw_find from './src/screens/Pw_find';
 
 import LastRecord from './src/screens/screensMypage/LastRecord';
 import MyBookmark from './src/screens/screensMypage/MyBookmark';
-import Myprofil from './src/screens/screensMypage/Myprofil';
+import Myprofile from './src/screens/screensMypage/Myprofile';
 import Pw_reset from './src/screens/screensMypage/Pw_reset';
 
 import Result from './src/screens/screensPhoto/Result';
+
+import MyRecord_bar from './src/screens/screensMypage/MyRecord_bar';
+
+import Past_Result from './src/screens/screensResult/Past_Result';
 
 const Stack = createStackNavigator();
 
@@ -74,13 +77,8 @@ const App = () => {
 
 
                 <Stack.Screen
-                name="Magazine_one"
-                component={Magazine_one}
-                options={{headerShown: false}}
-                />
-                <Stack.Screen
-                name="Magazine_two"
-                component={Magazine_two}
+                name="Magazine"
+                component={Magazine}
                 options={{headerShown: false}}
                 />
                 <Stack.Screen
@@ -101,8 +99,8 @@ const App = () => {
                 options={{headerShown: false}}
                 />
                 <Stack.Screen
-                name="Myprofil"
-                component={Myprofil}
+                name="Myprofile"
+                component={Myprofile}
                 options={{headerShown: false}}
                 />
                 <Stack.Screen
@@ -114,6 +112,18 @@ const App = () => {
                 <Stack.Screen
                 name="Result"
                 component={Result}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen
+                name="MyRecord_bar"
+                component={MyRecord_bar}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen
+                name="Past_Result"
+                component={Past_Result}
                 options={{headerShown: false}}
                 />
             </Stack.Navigator>

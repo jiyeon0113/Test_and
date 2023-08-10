@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, Image, FlatList } from
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import Result from './screensPhoto/Result';
 
-const Camera = ({navigation}) => {
+const Camera = ({ navigation }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
 
@@ -30,20 +30,31 @@ const Camera = ({navigation}) => {
         navigation.navigate('Result', { selectedImage });
     };
 
+    const buttons = [
+        { key: 'camera', title: '카메라', onPress: openCamera },
+        { key: 'gallery', title: '갤러리', onPress: openGallery },
+    ];
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity style={styles.button} onPress={item.onPress}>
+            <Text>{item.title}</Text>
+        </TouchableOpacity>
+    );
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={openCamera}>
-                <Text>카메라</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={openGallery}>
-                <Text>갤러리</Text>
-            </TouchableOpacity>
+            <FlatList
+                data={buttons}
+                renderItem={renderItem}
+                keyExtractor={item => item.key}
+                contentContainerStyle={styles.buttonContainer}
+            />
             {selectedImage && (
                 <Image source={{ uri: selectedImage }} style={styles.image} />
             )}
             {showPopup && (
                 <View style={styles.popup}>
-                    <Text>진단하시겠습니까?</Text>
+                    <Text style={styles.popupText}>식물의 상태를{"\n"}진단하시겠습니까?</Text>
                     {selectedImage && (
                         <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
                     )}
@@ -51,7 +62,10 @@ const Camera = ({navigation}) => {
                         <TouchableOpacity style={styles.popupButton} onPress={handleDiagnose}>
                             <Text>확인</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.popupButton} onPress={() => setShowPopup(false)}>
+                        <TouchableOpacity
+                            style={styles.popupButton}
+                            onPress={() => setShowPopup(false)}
+                        >
                             <Text>취소</Text>
                         </TouchableOpacity>
                     </View>
@@ -64,6 +78,11 @@ const Camera = ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 150,
+    },
+    buttonContainer: {
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -84,16 +103,22 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         elevation: 5,
+        color: 'gray',
+        width: 200,
     },
     popupButtons: {
         flexDirection: 'row',
-        marginTop: 10,
+        marginTop: 20,
+        marginVertical: 10,
     },
     popupButton: {
         backgroundColor: '#8CB972',
         padding: 10,
         borderRadius: 5,
         margin: 5,
+    },
+    popupText: {
+        color: 'gray',
     },
     selectedImage: {
         width: 150,

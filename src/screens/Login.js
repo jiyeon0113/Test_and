@@ -6,17 +6,15 @@ import {
     Image,
     TouchableOpacity,
     FlatList,
+    Alert,
 } from 'react-native';
 import Input, { KeyboardTypes, ReturnKeyTypes } from '../components/Input';
 import { useNavigation } from '@react-navigation/native';
-import Toast from 'react-native-toast-message';
 
 const Login = () => {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const isEmailValid = email => {
         const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -32,11 +30,12 @@ const Login = () => {
     };
 
     const handleMainScreen = () => {
-        setShowSuccessMessage(true);
-        setTimeout(() => {
-            setShowSuccessMessage(false);
-        }, 5000);
-        navigation.navigate('Home');
+        // Simulate a successful login
+        if (isLoginEnabled()) {
+            // Show a simple alert
+            Alert.alert('로그인 성공', '로그인에 성공했습니다.', [{ text: '확인' }]);
+            navigation.navigate('Home');
+        }
     };
 
     const handlePW_findScreen = () => {
@@ -50,9 +49,8 @@ const Login = () => {
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
-        style={styles.button}
-        onPress={item.onPress}
-        disabled={showSuccessMessage}
+            style={styles.button}
+            onPress={item.onPress}
         >
             <Text style={styles.textButton}>{item.title}</Text>
         </TouchableOpacity>
@@ -60,44 +58,38 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-        <Image source={require('../../assets/main.png')} style={styles.image} />
-        <Text style={styles.baseText}>GreenDan</Text>
-        <Input
-            title={'이메일'}
-            placeholder="your@mail.com"
-            keyboardType={KeyboardTypes.EMAIL}
-            returnKeyType={ReturnKeyTypes.NEXT}
-            value={email}
-            onChangeText={text => setEmail(text)}
-        />
-        <Input
-            title={'비밀번호'}
-            returnKeyType={ReturnKeyTypes.DONE}
-            secureTextEntry
-            value={password}
-            onChangeText={text => setPassword(text)}
-        />
-        <TouchableOpacity
-            style={styles.mainButton}
-            onPress={handleMainScreen}
-            disabled={!isLoginEnabled() || showSuccessMessage}
-        >
-            <Text style={styles.mainButtonText}>Login</Text>
-        </TouchableOpacity>
-        <FlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
-            horizontal
-            contentContainerStyle={styles.buttonContainer}
-        />
-        {showSuccessMessage && (
-            <Toast
-            style={styles.toastContainer}
-            text1="로그인 성공"
+            <Image source={require('../../assets/main.png')} style={styles.image} />
+            <Text style={styles.baseText}>GreenDan</Text>
+            <Input
+                title={'이메일'}
+                placeholder="your@mail.com"
+                keyboardType={KeyboardTypes.EMAIL}
+                returnKeyType={ReturnKeyTypes.NEXT}
+                value={email}
+                onChangeText={text => setEmail(text)}
             />
-        )}
-        <Text style={styles.text}>vol.0.2</Text>
+            <Input
+                title={'비밀번호'}
+                returnKeyType={ReturnKeyTypes.DONE}
+                secureTextEntry
+                value={password}
+                onChangeText={text => setPassword(text)}
+            />
+            <TouchableOpacity
+                style={styles.mainButton}
+                onPress={handleMainScreen}
+                disabled={!isLoginEnabled()}
+            >
+                <Text style={styles.mainButtonText}>Login</Text>
+            </TouchableOpacity>
+            <FlatList
+                data={data}
+                renderItem={renderItem}
+                keyExtractor={(item, index) => index.toString()}
+                horizontal
+                contentContainerStyle={styles.buttonContainer}
+            />
+            <Text style={styles.text}>vol.0.3</Text>
         </View>
     );
 };
@@ -120,9 +112,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 130,
         paddingVertical: 5,
         margin: 5,
-        backgroundColor: '#2D5E40', // 변경: 배경색
-        borderColor: '#2D5E40', // 변경: 테두리 색상
-        borderWidth: 1, // 변경: 테두리 두께
+        backgroundColor: '#2D5E40',
+        borderColor: '#2D5E40',
+        borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -130,10 +122,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: 'white',
         fontWeight: 'bold',
-    },
-    text: {
-        marginTop: 200,
-        alignItems: 'center',
     },
     textButton: {
         fontSize: 20,
@@ -145,15 +133,6 @@ const styles = StyleSheet.create({
         marginTop: 1,
         marginLeft: 20,
     },
-    toastContainer: {
-        width: '80%',
-        alignSelf: 'center',
-        backgroundColor: '#2D5E40',
-        borderRadius: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        marginTop: 20,
-    },
     button: {
         marginHorizontal: 15,
         justifyContent: 'center',
@@ -163,6 +142,11 @@ const styles = StyleSheet.create({
     },
     image: {
         marginBottom: 20,
+    },
+    text: {
+        marginTop: 10,
+        fontSize: 14,
+        color: '#2D5E40',
     },
 });
 

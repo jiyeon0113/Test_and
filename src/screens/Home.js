@@ -1,8 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Button, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { NavigationContainer } from '@react-navigation/native';
 
 import Camera from './Camera';
 import Setting from './Setting';

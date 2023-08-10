@@ -1,34 +1,50 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import MyRecord_bar from './screensMypage/MyRecord_bar';
+import LastRecord from './screensMypage/LastRecord';
 
 const Main = () => {
     const navigation = useNavigation();
-
-    const handleMagazine = () => {
-        navigation.navigate('Magazine_one');
-    };
-    const handleMagazine_two = () => {
-        navigation.navigate('Magazine_two');
-    };
 
     const data = [
         {
             id: '1',
             title: '토마토 잎 곰팡이병',
-            image: require('../../assets/tomatoleafmold1.jpg')
+            image: require('../../assets/tomatoleafmold1.jpg'),
+            explanation: `
+                잎의 일차 감염에서 꽃 (특히 종자를 생산하는 작물에서 위험) 
+                ...
+            `,
         },
         {
             id: '2',
             title: '토마토 황화잎말이 바이러스',
-            image: require('../../assets/yellowleafcurlVirus1.jpg')
+            image: require('../../assets/yellowleafcurlVirus1.jpg'),
+            explanation: `
+                토마토 황화잎말이병은 토마토 
+                Yellow Leaf Curl Virus 
+                (TYLCV)에 의하여 발생하는 바이러스병해다.
+            `,
         },
     ];
+
+    const handleMagazine = (item) => {
+        navigation.navigate('Magazine', {
+            title: item.title,
+            image: item.image,
+            explanation: item.explanation,
+        });
+    };
+
+    const handleRecord = () => {
+        navigation.navigate('LastRecord');
+    };
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={styles.magazineItem}
-            onPress={item.id === '1' ? handleMagazine : handleMagazine_two}
+            onPress={() => handleMagazine(item)}
         >
             <View style={styles.imageContainer}>
                 <Image source={item.image} style={styles.image} />
@@ -41,18 +57,17 @@ const Main = () => {
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <View style={styles.container}>
                 <Text style={styles.titleText}>GreenDan</Text>
-                <Text style={styles.container}>자주 발병하는 병해</Text>
+                <Text style={styles.title}>자주 발병하는 병해</Text>
                 <FlatList
                     data={data}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />
                 <Text style={styles.container2}>나의 지난 기록</Text>
-                    <TouchableOpacity onPress={() => {}} style={styles.magazineContainer}>
+                    <TouchableOpacity onPress={() => handleRecord} style={styles.magazineContainer}>
                         <Image source={require('../../assets/yellowleafcurlVirus2.jpg')} style={styles.image2} />
                         <Text style={styles.magazineText}>2023.8.1{"\n"}진단 결과</Text>
                     </TouchableOpacity>
-                    
             </View>
         </ScrollView>
     );
@@ -69,26 +84,13 @@ const styles = StyleSheet.create({
         color: '#8CB972',
         marginBottom: 40,
     },
-    container: {
+    title: {
         alignItems: 'center',
         color: '#2D5E40',
         fontSize: 20,
         marginBottom: 20,
     },
-    container2: {
-        margin: 10,
-        marginTop: 30,
-        alignItems: 'center',
-        color: '#2D5E40',
-        fontSize: 20,
-    },
     image: {
-        width: 180,
-        height: 130,
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
-    },
-    image2: {
         width: 180,
         height: 130,
         borderTopLeftRadius: 10,
@@ -121,6 +123,23 @@ const styles = StyleSheet.create({
     },
     magazineContainer: {
         flexDirection: 'row',
+    },
+    container2: {
+        margin: 20,
+        marginTop: 30,
+        alignItems: 'center',
+        color: '#2D5E40',
+        fontSize: 20,
+    },
+    magazineContainer: {
+        flexDirection: 'row',
+    },
+    image2: {
+        width: 180,
+        height: 130,
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
+        
     },
 });
 
