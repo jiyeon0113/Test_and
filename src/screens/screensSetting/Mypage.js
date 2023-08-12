@@ -15,11 +15,6 @@ const Mypage = () => {
         },
         {
             id: '2',
-            title: '나의 지난 기록',
-            screen: 'MyRecord_bar',
-        },
-        {
-            id: '3',
             title: '비밀번호 재설정',
             screen: 'Pw_reset',
         },
@@ -53,7 +48,7 @@ const Mypage = () => {
         <View style={styles.container}>
             <Text style={styles.appName}>GreenDan</Text>
 
-            <Image source={require('../../assets/profile_tomato.jpg')} style={styles.profileImage} />
+            <Image source={require('../../../assets/profile_tomato.jpg')} style={styles.profileImage} />
             <Text style={styles.welcomeText}>환영합니다!</Text>
             <Text style={styles.nickname}>사용자 닉네임</Text>
             
@@ -92,11 +87,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#ffffff',
+        margin: 20,
     },
     appName: {
         fontSize: 40,
-        color: '#E5EFDF',
+        color: '#CBDFC0',
         marginTop: 40,
         fontWeight: 'bold',
     },
@@ -125,7 +120,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: 5,
         alignItems: 'center',
-
     },
     buttonText: {
         fontSize: 18,

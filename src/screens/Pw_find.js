@@ -1,9 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, Text, Button, View, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Input, {KeyboardTypes, ReturnKeyTypes} from '../components/Input';
 import { useState } from "react";
+import Icon from 'react-native-vector-icons/MaterialIcons'; // 아이콘 추가
 
 const Pw_find = () => {
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [isEmailSent, setIsEmailSent] = useState(false);
 
@@ -24,13 +27,21 @@ const Pw_find = () => {
     return (
         <View style={styles.container}>
             <Image
-            source={require('../../assets/main.png')}
-            style={[styles.image, { opacity: 0.5}]}></Image>
+                source={require('../../assets/main.png')}
+                style={[styles.image, { opacity: 0.5}]}
+            ></Image>
+            <TouchableOpacity
+                style={styles.backButton}
+                onPress={() => navigation.goBack()}
+            >
+                <Icon name="arrow-back" size={30} color="#2D5E40" />
+            </TouchableOpacity>
             <Text style={styles.baseText}>GreenDan</Text>
             {!isEmailSent ? (
                 <>
-                    <Input
+                    <TextInput
                         title={'이메일'}
+                        style={styles.input}
                         placeholder="your@mail.com"
                         keyboardType={KeyboardTypes.EMAIL}
                         returnKeyType={ReturnKeyTypes.GO}
@@ -63,23 +74,29 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         marginVertical: 150,
-        backgroundColor: '#8CB972',
-        margin: 20,
+        margin: 10,
         padding: 10,
         borderRadius: 10,
-        },
-        
+    },
+    backButton: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        padding: 10,
+    },
+    backButtonText: {
+        color: '#2D5E40',
+        fontSize: 16,
+    },
     baseText: {
         flex: 1,
         fontSize: 30,
-        color: '#E5EFDF',
+        color: '#8CB972',
         fontWeight: 'bold',
         margin: 20,
-        
-        },
+    },
     text: {
         fontSize: 20,
-        
     },
     image: {
         borderRadius: 1,
@@ -90,11 +107,28 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: '#2D5E40',
         borderWidth: 1,
-        paddingHorizontal: 85,
+        paddingHorizontal: 80,
         paddingVertical: 7,
         margin: 10,
         backgroundColor: '#2D5E40',
         color: '#E5EFDF',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        marginBottom: 10,
+        width: '80%',
+        borderRadius: 10,
+        backgroundColor: '#E5EFDF',
+        color: '#538454',
+        borderColor: '#2D5E40',
+    },
+    backButton: {
+        position: 'absolute',
+        top: -100,
+        left: 280,
+        padding: 10,
     },
 });
 

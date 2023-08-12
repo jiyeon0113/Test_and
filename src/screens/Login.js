@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     FlatList,
     Alert,
+    TextInput,
 } from 'react-native';
 import Input, { KeyboardTypes, ReturnKeyTypes } from '../components/Input';
 import { useNavigation } from '@react-navigation/native';
@@ -60,16 +61,19 @@ const Login = () => {
         <View style={styles.container}>
             <Image source={require('../../assets/main.png')} style={styles.image} />
             <Text style={styles.baseText}>GreenDan</Text>
-            <Input
+            <TextInput
                 title={'이메일'}
+                style={styles.input}
                 placeholder="your@mail.com"
                 keyboardType={KeyboardTypes.EMAIL}
                 returnKeyType={ReturnKeyTypes.NEXT}
                 value={email}
                 onChangeText={text => setEmail(text)}
             />
-            <Input
+            <TextInput
                 title={'비밀번호'}
+                style={styles.input}
+                placeholder="pw"
                 returnKeyType={ReturnKeyTypes.DONE}
                 secureTextEntry
                 value={password}
@@ -89,7 +93,7 @@ const Login = () => {
                 horizontal
                 contentContainerStyle={styles.buttonContainer}
             />
-            <Text style={styles.text}>vol.0.3</Text>
+            <Text style={styles.text}>vol.0.4</Text>
         </View>
     );
 };
@@ -97,14 +101,16 @@ const Login = () => {
 const styles = StyleSheet.create({
     baseText: {
         fontSize: 40,
-        color: '#E5EFDF',
+        color: '#8CB972',
         fontWeight: 'bold',
     },
     container: {
-        backgroundColor: '#8CB972',
+        backgroundColor: 'white',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 10,
+        borderColor: 'white',
     },
     mainButton: {
         fontSize: 20,
@@ -132,6 +138,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         marginTop: 1,
         marginLeft: 20,
+        marginBottom: 150,
     },
     button: {
         marginHorizontal: 15,
@@ -147,6 +154,16 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontSize: 14,
         color: '#2D5E40',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        marginBottom: 10,
+        width: '80%',
+        borderRadius: 5,
+        backgroundColor: '#E5EFDF',
+        color: '#538454',
     },
 });
 

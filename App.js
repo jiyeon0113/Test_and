@@ -4,12 +4,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+
 import Login from './src/screens/Login';
 import TermsScreen from './src/screens/TermsScreen';
 import SignUp from './src/screens/SignUp';
 import Home from './src/screens/Home';
 import Main from './src/screens/Main';
-import Mypage from './src/screens/Mypage';
 import Camera from './src/screens/Camera';
 import Setting from './src/screens/Setting';
 
@@ -25,7 +25,20 @@ import Result from './src/screens/screensPhoto/Result';
 
 import MyRecord_bar from './src/screens/screensMypage/MyRecord_bar';
 
-import Past_Result from './src/screens/screensResult/Past_Result';
+import Past_Result from './src/screens/Past_Result';
+
+import Result_ from './src/screens/screensPhoto/Result_';
+
+import Mypage from './src/screens/screensSetting/Mypage';
+import Configuration from './src/screens/screensSetting/Configuration';
+import Notice from './src/screens/screensSetting/Notice';
+import Inquiry from './src/screens/screensSetting/Inquiry';
+import UseGuide from './src/screens/screensSetting/UseGuide';
+import TermsOfUse from './src/screens/screensSetting/TermsOfUse';
+import PrivacyPolicy from './src/screens/screensSetting/PrivacyPolicy';
+import SoftwareLicense from './src/screens/screensSetting/SoftwareLicense';
+
+import NoticeDetail from './src/screens/screensSetting/NoticeDetail';
 
 const Stack = createStackNavigator();
 
@@ -57,11 +70,6 @@ const App = () => {
                 <Stack.Screen
                 name="Main"
                 component={Main}
-                options={{headerShown: false}}
-                />
-                <Stack.Screen
-                name="Mypage"
-                component={Mypage}
                 options={{headerShown: false}}
                 />
                 <Stack.Screen
@@ -114,6 +122,12 @@ const App = () => {
                 component={Result}
                 options={{headerShown: false}}
                 />
+                <Stack.Screen
+                name="Result_"
+                component={Result_}
+                options={{headerShown: false}}
+                />
+                
 
                 <Stack.Screen
                 name="MyRecord_bar"
@@ -124,6 +138,53 @@ const App = () => {
                 <Stack.Screen
                 name="Past_Result"
                 component={Past_Result}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen
+                name="Mypage"
+                component={Mypage}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Configuration"
+                component={Configuration}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Notice"
+                component={Notice}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Inquiry"
+                component={Inquiry}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="UseGuide"
+                component={UseGuide}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="TermsOfUse"
+                component={TermsOfUse}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="PrivacyPolicy"
+                component={PrivacyPolicy}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="SoftwareLicense"
+                component={SoftwareLicense}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen
+                name="NoticeDetail"
+                component={NoticeDetail}
                 options={{headerShown: false}}
                 />
             </Stack.Navigator>

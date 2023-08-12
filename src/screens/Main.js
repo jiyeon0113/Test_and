@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import MyRecord_bar from './screensMypage/MyRecord_bar';
-import LastRecord from './screensMypage/LastRecord';
 
 const Main = () => {
     const navigation = useNavigation();
@@ -38,7 +36,7 @@ const Main = () => {
     };
 
     const handleRecord = () => {
-        navigation.navigate('LastRecord');
+        navigation.navigate('MyRecord_bar');
     };
 
     const renderItem = ({ item }) => (
@@ -64,7 +62,7 @@ const Main = () => {
                     keyExtractor={item => item.id}
                 />
                 <Text style={styles.container2}>나의 지난 기록</Text>
-                    <TouchableOpacity onPress={() => handleRecord} style={styles.magazineContainer}>
+                    <TouchableOpacity onPress={handleRecord} style={styles.magazineContainer}>
                         <Image source={require('../../assets/yellowleafcurlVirus2.jpg')} style={styles.image2} />
                         <Text style={styles.magazineText}>2023.8.1{"\n"}진단 결과</Text>
                     </TouchableOpacity>
@@ -144,3 +142,4 @@ const styles = StyleSheet.create({
 });
 
 export default Main;
+

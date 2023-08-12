@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Camera from './Camera';
 import Setting from './Setting';
-import Mypage from './Mypage';
 import Main from './Main';
+import MyRecord_bar from './screensMypage/MyRecord_bar';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,19 +24,19 @@ function Home() {
                     name="GreenDan"
                     component={Main}
                     options={{
-                    tabBarLabel: '마이페이지',
+                    tabBarLabel: '메인화면',
                     tabBarIcon: ({color}) => (
                         <Icon name="home" color={color} size={40} />
                     ),
                     }}
                 />
                 <Tab.Screen
-                    name="Mypage"
-                    component={Mypage}
+                    name="Record"
+                    component={MyRecord_bar}
                     options={{
-                    tabBarLabel: '마이페이지',
+                    tabBarLabel: '나의 기록',
                     tabBarIcon: ({color}) => (
-                        <Icon name="account-circle" color={color} size={40} />
+                        <Icon name="feed" color={color} size={40} />
                     ),
                     }}
                 />

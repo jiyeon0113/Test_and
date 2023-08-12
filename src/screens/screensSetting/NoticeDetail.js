@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Magazine = ({ route }) => {
+
+
+const NoticeDetail = ({ route }) => {
     const navigation = useNavigation();
-    const { title, image, explanation } = route.params;
+    const { title, content ,explanation, date } = route.params;
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -14,8 +16,9 @@ const Magazine = ({ route }) => {
                     <Icon name="arrow-back" size={30} color="#2D5E40" />
                 </TouchableOpacity>
                 <Text style={styles.title}>{title}</Text>
-                <Image source={image} style={styles.image} />
+                <Text style={styles.content}>{content}</Text>
                 <Text style={styles.explanation}>{explanation}</Text>
+                <Text style={styles.date}>{date}</Text>
             </View>
         </ScrollView>
     );
@@ -23,8 +26,10 @@ const Magazine = ({ route }) => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         padding: 20,
         alignItems: 'center',
+        backgroundColor: '#8CB972',
     },
     backButton: {
         position: 'absolute',
@@ -34,10 +39,16 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: '#8CB972',
+        color: '#E5EFDF',
         fontWeight: 'bold',
         marginBottom: 20,
         marginTop: 40,
+        padding: 20,
+    },
+    content: {
+        fontSize: 18,
+        color: '#2D5E40',
+        marginBottom: 20,
     },
     image: {
         width: 300,
@@ -53,9 +64,15 @@ const styles = StyleSheet.create({
         color: '#2D5E40',
         borderWidth: 1,
         borderColor: '#2D5E40',
-        padding: 10,
+        padding: 30,
         width: '100%',
+    },
+    date: {
+        padding: 10,
+        fontSize: 14,
+        color: 'gray',
+        marginBottom: 10,
     },
 });
 
-export default Magazine;
+export default NoticeDetail;

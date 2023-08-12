@@ -3,9 +3,9 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Magazine = ({ route }) => {
+const Result_ = ({ route }) => {
     const navigation = useNavigation();
-    const { title, image, explanation } = route.params;
+    const { title, image, explanation, date, bookmarked  } = route.params;
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -16,6 +16,17 @@ const Magazine = ({ route }) => {
                 <Text style={styles.title}>{title}</Text>
                 <Image source={image} style={styles.image} />
                 <Text style={styles.explanation}>{explanation}</Text>
+                <View style={styles.infoContainer}>
+                    <Text style={styles.date}>Date: {date}</Text>
+                    <View style={styles.bookmarkContainer}>
+                        <Text style={styles.bookmarkText}>Bookmarked: </Text>
+                        <Icon
+                            name={bookmarked ? 'bookmark' : 'bookmark-border'}
+                            size={24}
+                            color={bookmarked ? 'blue' : 'gray'}
+                        />
+                    </View>
+                </View>
             </View>
         </ScrollView>
     );
@@ -58,4 +69,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Magazine;
+export default Result_;

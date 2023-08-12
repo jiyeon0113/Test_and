@@ -27,7 +27,7 @@ const Camera = ({ navigation }) => {
 
     const handleDiagnose = () => {
         setShowPopup(false);
-        navigation.navigate('Result', { selectedImage });
+        navigation.navigate('Past_Result', { selectedImage });
     };
 
     const buttons = [
@@ -37,7 +37,7 @@ const Camera = ({ navigation }) => {
 
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.button} onPress={item.onPress}>
-            <Text>{item.title}</Text>
+            <Text style={styles.buttonTitle}>{item.title}</Text>
         </TouchableOpacity>
     );
 
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 150,
+        marginTop: 100,
+        
     },
     buttonContainer: {
         justifyContent: 'center',
@@ -91,6 +92,14 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         margin: 10,
+        width: 200,
+        height: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonTitle:{
+        fontSize: 30,
+        fontWeight: 'bold',
     },
     image: {
         width: 200,
